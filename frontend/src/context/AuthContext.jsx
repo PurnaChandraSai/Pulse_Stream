@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   const { socket } = useSocket()
 
   const api = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://pulse-stream-2.onrender.com',
     headers: { 'Content-Type': 'application/json' }
   })
 
