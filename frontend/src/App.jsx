@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
+
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -10,8 +11,12 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/signup" element={<Login />} />
+          {/* Redirect / to /login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Login />} />
+
           <Route
             path="/dashboard"
             element={
@@ -21,6 +26,7 @@ function App() {
             }
           />
         </Routes>
+
         <Toaster position="top-right" />
       </BrowserRouter>
     </AuthProvider>
